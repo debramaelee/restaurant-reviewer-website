@@ -1,0 +1,32 @@
+<h1>{{restaurant.restaurant_name}}</h1>
+
+  <p>Address: </p>{{restaurant.address}}
+  <p>Category: </p>{{restaurant.category}}
+
+{{#if reviews}}
+  <h2>Reviews</h2>
+  {{#each reviews}}
+    <h3>{{title}}</h3>
+    <p>Author: {{reviewer_name}}</p>
+    <p>Stars: {{stars}}</p>
+    <p>{{review}}</p>
+  {{/each}}
+{{/if}}
+
+<h2>Write your own review!</h2>
+
+<form action="/submit_review/{{restaurant.id}}" method="POST">
+<p>Review Title</p>
+<input type="text" name="review_title">
+<p>Stars</p>
+<select name="stars">
+  <option value="5">5</option>
+  <option value="4">4</option>
+  <option value="3">3</option>
+  <option value="2">2</option>
+  <option value="1">1</option>
+</select>
+<p>Review Text</p>
+<textarea name = "review_text" rows="5" cols ="40" name="review_text" ></textarea><br>
+<button type="submit">Submit</button>
+</form>
